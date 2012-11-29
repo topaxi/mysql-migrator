@@ -1,0 +1,19 @@
+{ "mysqldump": "/usr/bin/mysqldump"
+, "mysql":     "/usr/bin/mysql"
+, "from": { "host": "example.com"
+          , "name": "example"
+          , "user": "exampleUser"
+          , "pass": "12345678"
+          }
+, "to": [{ "host": "db01.example.com"
+         , "name": "example"
+         , "user": "exampleUser"
+         , "pass": "foobar321"
+         }
+        ,{ "host": "db02.example.com"
+         , "name": "example"
+         , "user": "exampleUser"
+         , "pass": "foobar123"
+         }
+        ]
+}
