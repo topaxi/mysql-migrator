@@ -15,14 +15,20 @@ temp.open('mysql-migrator', function(err, dump) {
   p.stdout.pipe(ws)
 
   function importFromDump(code, signal) {
-    if (!code) importFrom(dump)
+    if (code) return
+
+    importFrom(dump, cleanup)
+  }
+
+  function cleanup() {
+    fs.unlink(dump.path)
   }
 })
 
-function importFrom(dump) {
+function importFrom(dump, done) {
   async.forEachSeries(config.to, function(db, done) {
     importDump(fs.createReadStream(dump.path), db, done)
-  })
+  }, done)
 }
 
 function importDump(rs, db, done) {
