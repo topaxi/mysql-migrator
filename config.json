@@ -1,5 +1,6 @@
 { "mysqldump": "/usr/bin/mysqldump"
 , "mysql":     "/usr/bin/mysql"
+, "jobs": 1
 , "from": { "host": "example.com"
           , "name": "example"
           , "user": "exampleUser"

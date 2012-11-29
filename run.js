@@ -26,7 +26,7 @@ temp.open('mysql-migrator', function(err, dump) {
 })
 
 function importFrom(dump, done) {
-  async.forEachSeries(config.to, function(db, done) {
+  async.forEachLimit(config.to, config,jobs || 1, function(db, done) {
     importDump(fs.createReadStream(dump.path), db, done)
   }, done)
 }
